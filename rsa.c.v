@@ -46,7 +46,7 @@ pub fn (key RsaKey) sha1_encrypt_key_into(@in []byte, mut out []byte) {
 
 
 pub fn (key RsaKey) sha1_encrypt_key(@in []byte) []byte {
-	out := []byte{len:@in.len*16}
+	mut out := []byte{len:@in.len*16}
 
 	key.sha1_encrypt_key_into(@in, mut out)
 
