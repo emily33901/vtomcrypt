@@ -57,7 +57,9 @@ fn pkcs7_pad(mut buf []byte, block_length int, is_padding bool) {
 
 		to_append := []byte{len:int(padval), init:padval}
 		(*buf) << to_append
-		to_append.free()
+		unsafe {
+			to_append.free()
+		}
 	} else {
 		/* We are UNPADDING this block (and removing bytes)
 			We really just need to verify that the pad bytes are correct,
